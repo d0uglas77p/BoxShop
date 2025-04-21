@@ -1,3 +1,18 @@
 # Box Shop
-### Sistema digital para divulgações de catálogos e produtos para as lojas
-<img src="/boxshoplogo.png">
+### Sistema digital para divulgações de catálogos e produtos para as lojas <br>
+
+<img src="/boxshoplogo.png" alt="Logo da BoxShop" width="200">
+
+#
+
+### Tecnologias
+- Java
+- Spring Boot
+- Spring Data JPA
+- Thymeleaf
+- Tomcat
+- Maven
+- MySQL
+- JavaScript
+- HTML
+- CSS

@@ -14,7 +14,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
 	<name>BoxShop</name>
-	<description>Sistema de divulgação de catálogos e produtos</description>
+	<description>Sistema digital para divulgações de catálogos e produtos para as lojas</description>
 	<url/>
 
 	<properties>

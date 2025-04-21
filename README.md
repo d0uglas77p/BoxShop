@@ -1,7 +1,7 @@
 # Box Shop
 ### Sistema digital para divulgações de catálogos e produtos para as lojas <br>
 
-<img src="/boxshoplogo.png" alt="Logo da BoxShop" width="200">
+<img src="/logo.png" alt="Logo da BoxShop" width="200">
 
 #
 

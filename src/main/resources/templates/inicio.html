@@ -4,7 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="icon" th:href="@{/boxshoplogo.png}"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Reggae+One&family=Tomorrow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+          rel="stylesheet">
+
+    <link rel="icon" th:href="@{/images/boxshoplogo.png}"/>
 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
 
@@ -16,63 +21,183 @@
     <title>BoxShop</title>
 </head>
 
-<body >
-    <!-- FORMULARIO-->
-    <form th:action="@{/cadastrar-logista}" method="post">
-        <h1>Informações pessoais</h1>
-        <label>Nome completo</label>
-        <input type="text" name="nomeCompletoLogista" placeholder="Nome" pattern="[A-Za-zÀ-ÿ\s]+" required title="Não utilize caracteres e números neste campo">
+<body>
+    <button type="button" onclick="openModalLogin()" class="ant-input custom-btn">Entrar</button>
+    <button type="button" onclick="openModalCadastrar()" class="ant-input custom-btn">Cadastrar</button>
 
-        <label>CPF</label>
-        <input type="text" name="cpfLogista" placeholder="Apenas os digitos" required>
+    <!-- FORMULARIO DE LOGIN-->
+    <div id="loginModal" class="modal-login">
+        <div class="modal-login-content">
+            <span class="close-login" onclick="closeModalLogin()">&times;</span>
 
-        <label>Data de nascimento</label>
-        <input type="date" name="dataNascimentoLogista" required>
+            <form th:action="@{/login-logista}" method="post">
+                <h1>Entrar</h1>
 
-        <label>
-            <input type="radio" name="generoLogista" value="Masculino" required>
-            Masculino
-        </label>
+                <div class="div-form-login">
+                    <div class="div-login-p">
+                        <input type="email" id="email-login" name="email" placeholder="E-mail"
+                               class="ant-input custom-input-editar" required>
 
-        <label>
-            <input type="radio" name="generoLogista" value="Feminino" required>
-            Feminino
-        </label>
+                        <input type="password" id="senha-login" name="senha" placeholder="Senha"
+                               class="ant-input custom-input-editar" required>
+                    </div>
 
-        <h1>Informações do comércio</h1>
-        <label>Nome do comércio</label>
-        <input type="text" name="nomeComercioLogista" placeholder="Auto-peças dois irmãos" required>
+                    <div class="div-login-btn">
+                        <button type="button" onclick="openModalRecuperarConta()" class="ant-input custom-btn">Recuperar</button>
+                        <button type="submit" class="ant-input custom-btn">Entrar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- FORMULARIO DE LOGIN-->
 
-        <label>Email</label>
-        <input type="email" name="emailComercioLogista" placeholder="E-mail"
-               pattern="^(?!.*..)([a-zA-Z0-9._%+-]+)@([a-zA-Z0-9.-]+).([a-zA-Z]{2,})$" required title="E-mail inválido">
+    <!-- FORMULARIO DE RECUPERAR CONTA-->
+    <div id="recuperarContaModal" class="modal-recuperar-conta">
+        <div class="modal-recuperar-conta-content">
+            <span class="close-recuperar-conta" onclick="closeModalRecuperarConta()">&times;</span>
 
-        <label>Número de Whatsapp</label>
-        <input type="tel" name="whatsappComercioLogista"
-               placeholder="Telefone" maxlength="11" minlength="11" required
-               title="Número inválido">
+            <form th:action="@{/recuperar-conta-logista}" method="post">
+                <h1>Recuperar Conta</h1>
 
-        <select name="tipoComercioLogista">
-            <option value="" disabled selected>Tipo de Comércio</option>
-            <option value="Loja">Loja</option>
-            <option value="PetShop">PetShop</option>
-            <option value="Alimentação">Alimentação</option>
-            <option value="Bebidas">Bebidas</option>
-            <option value="Beleza/Estética">Beleza/Estética</option>
-            <option value="Barbearia">Barbearia</option>
-            <option value="Materiais">Materiais</option>
-            <option value="Estúdio">Estúdio</option>
-            <option value="Cursos">Cursos</option>
-            <option value="Outros">Outros</option>
-        </select>
+                <div class="div-form-login">
+                    <div class="div-login-p">
+                        <input type="email" id="email-recuperar-conta" name="email" placeholder="E-mail"
+                               class="ant-input custom-input-editar" required>
+                    </div>
 
-        <label>Senha</label>
-        <input type="password" name="senhaComercialLogista" placeholder="Senha" pattern=".{8,}" required title="A senha deve ter pelo menos 8 caracteres">
+                    <div class="div-login-btn">
+                        <button type="submit" class="ant-input custom-btn">Recuperar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- FORMULARIO DE RECUPERAR CONTA-->
 
-        <button type="submit">Cadastrar</button>
+    <!-- FORMULARIO DE CADASTRO-->
+    <div id="cadastrarModal" class="modal-cadastrar">
+        <div class="modal-cadastrar-content">
+            <span class="close-cadastrar" onclick="closeModalCadastrar()">&times;</span>
 
-    </form>
-    <!-- FORMULARIO-->
+            <form th:action="@{/cadastrar-logista}" method="post">
+                <!-- ETAPA 1: INFORMAÇÕES PESSOAIS -->
+                <div id="etapa1">
+                    <h1>Informações Pessoais</h1>
+
+                    <div class="div-form-cadastro">
+                        <div>
+                            <div class="div-cadastro-p">
+                                <label>Nome Completo</label>
+                                <input type="text" name="nomeCompletoLogista" placeholder="Digite o seu nome"
+                                       pattern="[A-Za-zÀ-ÿ\s]+" required class="ant-input custom-input-editar">
+                            </div>
+
+                            <div class="div-cadastro-p">
+                                <label>CPF</label>
+                                <input type="text" name="cpfLogista"
+                                       placeholder="Digite o seu CPF" onkeyup="formatarCPF(this)"
+                                       maxlength="14" title="CPF inválido"
+                                       required class="ant-input custom-input-editar">
+                            </div>
+
+                            <div class="div-data-column">
+                                <div class="div-cadastro-p">
+                                    <label>Data de Nascimento</label>
+                                    <input type="date" name="dataNascimentoLogista" required
+                                           class="ant-input custom-input-nascimento">
+                                </div>
+
+                                <div class="div-cadastro-genero">
+                                    <label>
+                                        <input type="radio" name="generoLogista" value="Masculino" required>
+                                        Masculino
+                                    </label>
+
+                                    <label>
+                                        <input type="radio" name="generoLogista" value="Feminino" required>
+                                        Feminino
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="div-cadastro-btn">
+                                <button type="button" class="ant-input custom-btn" onclick="proximaEtapa()">Próximo</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="mensagemErro" style="display: none; color: red; margin-bottom: 10px;">
+                        Preencha todos os campos.
+                    </div>
+                </div>
+
+                <!-- ETAPA 2: INFORMAÇÕES DO COMÉRCIO -->
+                <div id="etapa2" style="display: none;">
+                    <h1>Informações Comerciais</h1>
+
+                    <div class="div-form-cadastro">
+                        <div>
+                            <div class="div-cadastro-p">
+                                <label>Nome do Comércio</label>
+                                <input type="text" name="nomeComercioLogista" placeholder="Auto-peças dois irmãos"
+                                       required class="ant-input custom-input-editar">
+                            </div>
+
+                            <div id="mensagemErroNomeComercio" style="display: none; color: red; margin-bottom: 10px;">
+                                Esse nome de comércio já está em uso.
+                            </div>
+
+                            <div class="div-cadastro-p">
+                                <label>E-mail Comercial</label>
+                                <input type="email" name="emailComercioLogista" placeholder="Digite o e-mail comercial"
+                                       pattern="^(?!.*..)([a-zA-Z0-9._%+-]+)@([a-zA-Z0-9.-]+).([a-zA-Z]{2,})$"
+                                       required title="E-mail inválido" class="ant-input custom-input-editar">
+                            </div>
+
+                            <div class="div-data-column">
+                                <div class="div-cadastro-p">
+                                    <label>Whatsapp Comercial</label>
+                                    <input type="tel" name="whatsappComercioLogista"
+                                           placeholder="Digite o whatsapp" maxlength="11" minlength="11" required
+                                           title="Número inválido" onkeyup="formatarTelefone(this)" class="ant-input custom-input-nascimento">
+                                </div>
+
+                                <div class="div-cadastro-p">
+                                    <label>Selecione</label>
+                                    <select name="tipoComercioLogista" class="ant-input custom-input-nascimento">
+                                        <option value="" disabled selected>Tipo de Comércio</option>
+                                        <option value="Loja">Loja</option>
+                                        <option value="PetShop">PetShop</option>
+                                        <option value="Alimentação">Alimentação</option>
+                                        <option value="Bebidas">Bebidas</option>
+                                        <option value="Beleza/Estética">Beleza/Estética</option>
+                                        <option value="Barbearia">Barbearia</option>
+                                        <option value="Materiais">Materiais</option>
+                                        <option value="Estúdio">Estúdio</option>
+                                        <option value="Cursos">Cursos</option>
+                                        <option value="Outros">Outros</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="div-cadastro-p">
+                                <label>Senha</label>
+                                <input type="password" name="senhaComercialLogista" placeholder="Digite sua senha" pattern=".{8,}"
+                                       required title="A senha deve ter pelo menos 8 caracteres" class="ant-input custom-input-editar">
+                            </div>
+
+                            <div class="div-cadastro-btn">
+                                <button type="button" class="ant-input custom-btn" onclick="voltarEtapa()">Voltar</button>
+                                <button type="button" class="ant-input custom-btn" onclick="verificarNomeComercio()">Cadastrar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- FORMULARIO DE CADASTRO-->
 
     <!-- Renderiza mensagem de sucesso -->
     <div th:if="${successMessage}">

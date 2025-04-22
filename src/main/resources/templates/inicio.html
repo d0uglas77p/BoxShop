@@ -22,8 +22,16 @@
 </head>
 
 <body>
-    <button type="button" onclick="openModalLogin()" class="ant-input custom-btn">Entrar</button>
-    <button type="button" onclick="openModalCadastrar()" class="ant-input custom-btn">Cadastrar</button>
+    <header class="conteirner-nav-publica">
+        <div class="div-img-header">
+            <img th:src="@{/images/boxshoplogo.png}" alt="Logo da Box Shop" class="img-nav-logo">
+        </div>
+
+        <div class="div-btn-header">
+            <button type="button" onclick="openModalLogin()" class="ant-input custom-btn">Entrar</button>
+            <button type="button" onclick="openModalCadastrar()" class="ant-input custom-btn">Cadastrar</button>
+        </div>
+    </header>
 
     <!-- FORMULARIO DE LOGIN-->
     <div id="loginModal" class="modal-login">
@@ -31,7 +39,7 @@
             <span class="close-login" onclick="closeModalLogin()">&times;</span>
 
             <form th:action="@{/login-logista}" method="post">
-                <h1>Entrar</h1>
+                <h2 class="ant-typography ant-typography-title ant-typography-title-2">Entrar</h2>
 
                 <div class="div-form-login">
                     <div class="div-login-p">
@@ -58,7 +66,7 @@
             <span class="close-recuperar-conta" onclick="closeModalRecuperarConta()">&times;</span>
 
             <form th:action="@{/recuperar-conta-logista}" method="post">
-                <h1>Recuperar Conta</h1>
+                <h2 class="ant-typography ant-typography-title ant-typography-title-2">Recuperar Conta</h2>
 
                 <div class="div-form-login">
                     <div class="div-login-p">
@@ -83,7 +91,7 @@
             <form th:action="@{/cadastrar-logista}" method="post">
                 <!-- ETAPA 1: INFORMAÇÕES PESSOAIS -->
                 <div id="etapa1">
-                    <h1>Informações Pessoais</h1>
+                    <h2 class="ant-typography ant-typography-title ant-typography-title-2">Cadastrar</h2>
 
                     <div class="div-form-cadastro">
                         <div>
@@ -127,14 +135,14 @@
                         </div>
                     </div>
 
-                    <div id="mensagemErro" style="display: none; color: red; margin-bottom: 10px;">
+                    <div id="mensagemErro" style="display: none; color: red; margin-bottom: 5px; margin-top: 16px;">
                         Preencha todos os campos.
                     </div>
                 </div>
 
                 <!-- ETAPA 2: INFORMAÇÕES DO COMÉRCIO -->
                 <div id="etapa2" style="display: none;">
-                    <h1>Informações Comerciais</h1>
+                    <h2 class="ant-typography ant-typography-title ant-typography-title-2">Informações Comerciais</h2>
 
                     <div class="div-form-cadastro">
                         <div>
@@ -165,18 +173,18 @@
 
                                 <div class="div-cadastro-p">
                                     <label>Selecione</label>
-                                    <select name="tipoComercioLogista" class="ant-input custom-input-nascimento">
-                                        <option value="" disabled selected>Tipo de Comércio</option>
-                                        <option value="Loja">Loja</option>
-                                        <option value="PetShop">PetShop</option>
+                                    <select name="tipoComercioLogista" required class="ant-input custom-input-nascimento">
+                                        <option value="" disabled selected hidden>Tipo de Comércio</option>
                                         <option value="Alimentação">Alimentação</option>
-                                        <option value="Bebidas">Bebidas</option>
-                                        <option value="Beleza/Estética">Beleza/Estética</option>
                                         <option value="Barbearia">Barbearia</option>
-                                        <option value="Materiais">Materiais</option>
-                                        <option value="Estúdio">Estúdio</option>
+                                        <option value="Beleza/Estética">Beleza/Estética</option>
+                                        <option value="Bebidas">Bebidas</option>
                                         <option value="Cursos">Cursos</option>
+                                        <option value="Estúdio">Estúdio</option>
+                                        <option value="Loja">Loja</option>
+                                        <option value="Materiais">Materiais</option>
                                         <option value="Outros">Outros</option>
+                                        <option value="PetShop">PetShop</option>
                                     </select>
                                 </div>
                             </div>

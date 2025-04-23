@@ -13,6 +13,7 @@ html, body {
     flex-direction: column;
     font-family: 'Roboto', sans-serif;
     scroll-behavior: smooth;
+    background-color: #F8F8FF;
 }
 
 .custom-input-editar {
@@ -314,4 +315,140 @@ html, body {
     align-items: center;
 }
 /* MODAL CADASTRAR */
+
+/* INICIO */
+.conteiner-inicio {
+    width: 100%;
+    margin-top: 130px;
+}
+
+.div-inicio {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.div-inicio-colm1 {
+    position: relative;
+    width: 700px;
+    height: auto;
+    margin-left: 150px;
+    margin-right: 10px;
+    margin-bottom: 15px;
+}
+
+.div-inicio-colm1 h1 {
+    font-weight: 600;
+    font-size: 50px;
+    line-height: 1.02;
+    letter-spacing: -0.01em;
+}
+
+.div-inicio-colm1 h2 {
+    color: #059ae7;
+    font-weight: 400;
+    font-size: 26px;
+    margin: 0;
+}
+
+.div-inicio-colm1 p {
+    font-size: 18px;
+    line-height: 1.68;
+    letter-spacing: 0.02em;
+    color: #737272;
+}
+
+.div-inicio-colm2 {
+    position: relative;
+    width: 500px;
+    height: auto;
+    margin-right: 150px;
+    margin-left: 10px;
+}
+
+.img-section-icone1 {
+    position: absolute;
+    top: 60px;
+    left: 70px;
+    width: 50px;
+    height: auto;
+    z-index: 2;
+    animation: icone1-float 4s ease-in-out infinite;
+}
+
+@keyframes icone1-float {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-50px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+.img-section-icone2 {
+    position: absolute;
+    top: 5px;
+    left: 400px;
+    width: 50px;
+    height: auto;
+    z-index: 2;
+    animation: icone2-float 5s ease-in-out infinite;
+}
+
+@keyframes icone2-float {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-40px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+.img-section-icone3 {
+    position: absolute;
+    top: 180px;
+    left: 500px;
+    width: 50px;
+    height: auto;
+    z-index: 2;
+    animation: icone3-float 6s ease-in-out infinite;
+}
+
+@keyframes icone3-float {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-60px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+.gif-section-card-divulga {
+    position: absolute;
+    bottom: 35px;
+    left: 30px;
+    width: 150px;
+    height: auto;
+    z-index: 2;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+}
+
+.img-section-garota {
+    width: 480px;
+    height: auto;
+    display: block;
+}
+
+/* INICIO */
 /* PAGINA DE INICIO */

@@ -50,7 +50,6 @@ window.onclick = function (event) {
 function proximaEtapa() {
     const etapa1 = document.getElementById("etapa1");
     const inputs = etapa1.querySelectorAll("input");
-    const mensagemErro = document.getElementById("mensagemErro");
 
     let valid = true;
 
@@ -62,18 +61,21 @@ function proximaEtapa() {
     });
 
     if (valid) {
-        mensagemErro.style.display = "none";
         etapa1.style.display = "none";
         document.getElementById("etapa2").style.display = "block";
+
     } else {
-        mensagemErro.style.display = "block";
+        Swal.fire({
+            icon: 'warning',
+            title: 'Atenção!',
+            text: 'Por favor, preencha todos os campos corretamente.'
+        });
     }
 }
 
 function voltarEtapa() {
     document.getElementById("etapa2").style.display = "none";
     document.getElementById("etapa1").style.display = "block";
-    document.getElementById("mensagemErro").style.display = "none";
 }
 
 // FORMATAÇÃO DE TELEFONE
@@ -99,7 +101,6 @@ function formatarCPF(input) {
 
     if (cpf.length > 11) cpf = cpf.slice(0, 11);
 
-    // Aplica a máscara
     cpf = cpf.replace(/(\d{3})(\d)/, '$1.$2');
     cpf = cpf.replace(/(\d{3})(\d)/, '$1.$2');
     cpf = cpf.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
@@ -120,12 +121,41 @@ cpfInput.addEventListener("input", function () {
     }
 });
 
-// VERIFICA COM AJAX (SEM REINICIAR A PAGINA) SE EXISTE UM NOME DE COMERCIO JA CADASTRADO
-function verificarNomeComercio() {
-    var nomeComercio = document.querySelector('[name="nomeComercioLogista"]').value;
-    var mensagemErro = document.getElementById("mensagemErroNomeComercio");
+// VERIFICA CAMPOS DA ETAPA 2 / TIPO DE COMERCIO E SE O NOME DO COMERCIO EXISTE
 
-    // Realiza uma requisição AJAX para o backend para verificar se o nome do comércio já existe
+// O NOME DO COMERCIO FAZ UMA REQUISIÇÃO: > AJAX > CONTROLLER > SERVICE > BANCO DE DADOS
+//PARA NÃO PRECISAR RECARREGAR A PAGINA
+function verificarNomeComercio() {
+    const etapa2 = document.getElementById("etapa2");
+    const inputs = etapa2.querySelectorAll("input, select");
+    let camposInvalidos = [];
+
+    // Verifica se o "Tipo de Comércio" foi selecionado
+    const tipoComercio = document.querySelector('[name="tipoComercioLogista"]').value;
+    if (!tipoComercio) {
+        camposInvalidos.push('Tipo de Comércio');
+    }
+
+    // Valida todos os outros inputs e select
+    inputs.forEach(input => {
+        if (!input.checkValidity()) {
+            camposInvalidos.push(input.previousElementSibling ? input.previousElementSibling.innerText : input.name);
+        }
+    });
+
+    // Se houver campos inválidos, mostra o alerta
+    if (camposInvalidos.length > 0) {
+        Swal.fire({
+            icon: 'warning',
+            title: 'Atenção!',
+            text: 'Por favor, preencha todos os campos corretamente.'
+        });
+        return;
+    }
+
+    const nomeComercio = document.querySelector('[name="nomeComercioLogista"]').value;
+
+    // Verifica se o nome do comércio já existe via AJAX
     fetch('/verificar-nome-comercio', {
         method: 'POST',
         headers: {
@@ -136,15 +166,23 @@ function verificarNomeComercio() {
     .then(response => response.json())
     .then(data => {
         if (data.nomeExistente) {
-            mensagemErro.style.display = 'block';
-            mensagemErro.textContent = 'Esse nome de comércio já está em uso.';
-
+            Swal.fire({
+                icon: 'error',
+                title: 'Nome em uso!',
+                text: 'Esse nome de comércio já está em uso. Por favor, escolha outro.'
+            });
         } else {
-            mensagemErro.style.display = 'none';
-            document.querySelector('form').submit();
+            const formCadastro = document.querySelector('#cadastrarModal form');
+            formCadastro.submit();
         }
     })
+
     .catch(error => {
-        console.error('Erro ao verificar o nome:', error);
+        console.error('Erro na verificação do nome do comércio:', error);
+        Swal.fire({
+            icon: 'error',
+            title: 'Erro!',
+            text: 'Não foi possível verificar o nome do comércio. Tente novamente mais tarde.'
+        });
     });
 }

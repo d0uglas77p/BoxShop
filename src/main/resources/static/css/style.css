@@ -450,5 +450,54 @@ html, body {
     display: block;
 }
 
+.conteiner-info {
+    width: 100%;
+    margin-top: 50px;
+}
+
+.div-info {
+    width: 80%;
+    margin: 0 auto;
+    gap: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.div-info-card {
+    width: 350px;
+    height: 500px;
+    background-color: rgba(180, 227, 250, 0.7);
+    padding: 40px;
+    border-radius: 20px;
+    margin-bottom: 50px;
+    transition: transform 0.7s ease;
+}
+
+.div-info-card:hover {
+    transform: scale(1.07);
+}
+
+.img-info-card {
+    width: 40px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.div-info-card h2 {
+    font-weight: 600;
+    font-size: 26px;
+    line-height: 1.02;
+    letter-spacing: -0.01em;
+}
+
+.div-info-card p {
+    font-size: 16px;
+    line-height: 1.68;
+    letter-spacing: 0.02em;
+    color: #737272;
+    margin-top: 30px;
+}
+
 /* INICIO */
 /* PAGINA DE INICIO */

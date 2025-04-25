@@ -279,6 +279,49 @@
             </div>
         </div>
 
+        <div class="conteiner-crie-conta">
+            <div class="div-crie-conta">
+                <h2 class="mensagem-crie-conta">
+                    Crie sua conta comercial, rápida e segura, e comece a divulgar seu catálogo online.
+                </h2>
+
+                <button type="button" onclick="openModalCadastrar()" class="ant-input custom-btn">Cadastrar</button>
+            </div>
+        </div>
+
+        <div class="conteiner-tire-duvidas">
+            <div class="div-duvidas-h2">
+                <h2>Tire suas dúvidas</h2>
+            </div>
+
+            <form th:action="@{/enviar-duvidas}" method="post">
+                <div class="div-tire-duvidas">
+                    <div class="div-tire-duvidas-colm">
+                        <input type="text" name="nomeCompletoDuvidas" placeholder="Digite o seu nome"
+                               pattern="[A-Za-zÀ-ÿ\s]+" required
+                               style="background-color: white; border: 1px solid #b2b4b8;" class="ant-input custom-input-editar">
+
+                        <input type="email" name="emailDuvidas" placeholder="Digite o seu e-mail"
+                               pattern="^(?!.*..)([a-zA-Z0-9._%+-]+)@([a-zA-Z0-9.-]+).([a-zA-Z]{2,})$"
+                               required title="E-mail inválido"
+                               style="background-color: white; border: 1px solid #b2b4b8;" class="ant-input custom-input-editar">
+
+                        <input type="tel" name="numeroLogista"
+                               placeholder="Digite seu o telefone" maxlength="11" minlength="11" required
+                               title="Número inválido" onkeyup="formatarTelefone(this)"
+                               style="background-color: white; border: 1px solid #b2b4b8;" class="ant-input custom-input-nascimento">
+                    </div>
+
+                    <div class="div-tire-duvidas-colm2">
+                        <textarea name="descricaoDuvidas" placeholder="Descreva sua dúvida..." required
+                                  style="resize: none; background-color: white; border: 1px solid #b2b4b8;" class="ant-input custom-input-text-area-editar"></textarea>
+
+                        <button type="submit" class="ant-input custom-btn">Enviar</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
     </section>
 
     <!-- Renderiza mensagem de sucesso -->

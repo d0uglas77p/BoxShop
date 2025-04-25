@@ -325,8 +325,9 @@ html, body {
 .div-inicio {
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: flex-end;
+    gap: 50px;
 }
 
 .div-inicio-colm1 {
@@ -452,7 +453,7 @@ html, body {
 
 .conteiner-info {
     width: 100%;
-    margin-top: 50px;
+    margin-top: 100px;
 }
 
 .div-info {
@@ -489,6 +490,7 @@ html, body {
     font-size: 26px;
     line-height: 1.02;
     letter-spacing: -0.01em;
+    color: #2c3e50;
 }
 
 .div-info-card p {
@@ -499,5 +501,124 @@ html, body {
     margin-top: 30px;
 }
 
+.conteiner-pag {
+    width: 100%;
+    margin-top: 50px;
+}
+
+.div-pag {
+    margin: 0 auto;
+    gap: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.div-pag-img {
+    margin-right: 100px;
+    position: relative;
+}
+
+.img-pag-catalogo-exemplo {
+    position: absolute;
+    top: 80px;
+    left: 350px;
+    width: 220px;
+    height: auto;
+    box-shadow: 10px 10px 5px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    z-index: 2;
+    animation: img-pag-catalogo-exemplo 5s ease-in-out infinite;
+}
+
+@keyframes img-pag-catalogo-exemplo {
+    0% {
+        transform: translateX(0px);
+    }
+    50% {
+        transform: translateX(-60px);
+    }
+    100% {
+        transform: translateX(0px);
+    }
+}
+
+.img-pag-preço-card {
+    position: absolute;
+    top: 400px;
+    left: 10px;
+    width: 220px;
+    height: auto;
+    box-shadow: 8px 8px 3px rgba(0, 0, 0, 0.3);
+    border-radius: 100px;
+    z-index: 2;
+    animation: img-pag-preço-card 3s ease-in-out infinite;
+}
+
+@keyframes img-pag-preço-card {
+    0% {
+        transform: translateX(0px);
+    }
+    50% {
+        transform: translateX(-20px);
+    }
+    100% {
+        transform: translateX(0px);
+    }
+}
+
+.img-pag-garoto {
+    width: 500px;
+    height: auto;
+    display: block;
+}
+
+.pagamento-texto {
+    width: 700px;
+    background: white;
+    padding: 25px 30px;
+    border-radius: 16px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+    color: #333;
+}
+
+.pagamento-texto h2 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: #2c3e50;
+}
+
+.pagamento-texto p {
+    font-size: 16px;
+    margin-bottom: 12px;
+    line-height: 1.6;
+}
+
+.pagamento-texto p strong {
+    color: #1abc9c;
+}
+
+.pagamento-texto ul {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 15px;
+}
+
+.pagamento-texto ul li {
+    font-size: 16px;
+    margin-bottom: 10px;
+    padding-left: 30px;
+    position: relative;
+}
+
+.pagamento-texto ul li::before {
+    content: '✔';
+    position: absolute;
+    left: 0;
+    color: #1abc9c;
+    font-weight: bold;
+    font-size: 18px;
+}
 /* INICIO */
 /* PAGINA DE INICIO */

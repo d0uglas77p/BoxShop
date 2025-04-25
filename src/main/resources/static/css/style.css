@@ -706,3 +706,56 @@ html, body {
 }
 /* INICIO */
 /* PAGINA DE INICIO */
+
+/* FOOTER */
+.conteiner-footer {
+    width: 100%;
+    margin-top: 70px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    padding: 40px;
+    box-shadow: 0 -4px 25px rgba(0, 0, 0, 0.08);
+}
+
+.div-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.div-logos-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 300px;
+}
+
+.img-logo-footer-boxshop {
+    padding: 0;
+    width: 160px;
+    height: auto;
+}
+
+.img-logo-footer-mycoding {
+    padding: 0;
+    width: 120px;
+    height: auto;
+    cursor: pointer;
+}
+
+.div-footer-p {
+    margin: 0;
+    margin-top: 40px;
+}
+
+.div-footer-p p {
+    font-size: 18px;
+    color: #2c3e50;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+/* FOOTER */

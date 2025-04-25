@@ -206,7 +206,7 @@
                     <h1>
                         Monte seu catálogo online na
                         <span><span style="color: #059ae7;">Box</span><span style="color: #023b6b;">Shop</span></span>
-                        e divulgue com um único link.
+                        e divulgue com um único link
                     </h1>
                     <h2>Rápido, prático e eficiente!</h2>
                     <p>
@@ -321,8 +321,29 @@
                 </div>
             </form>
         </div>
-
     </section>
+
+    <footer>
+        <div class="conteiner-footer">
+            <div class="div-footer">
+                <div class="div-logos-footer">
+                    <img th:src="@{/images/boxshoplogo.png}" alt="Logo da Box Shop" class="img-logo-footer-boxshop">
+
+                    <a href="https://mycodinghub.tech/" target="_blank">
+                        <img th:src="@{/images/mycoding.png}" alt="Logo da My Coding" class="img-logo-footer-mycoding">
+                    </a>
+                </div>
+
+                <div class="div-footer-p">
+                    <p>
+                        © 2025. <span style="color: #363636; text-decoration: none; font-weight: 600;">BoxShop</span>.
+                        Todos os direitos reservados | Desenvolvido por
+                        <a href="https://mycodinghub.tech" target="_blank" style="color: #363636; text-decoration: none; font-weight: 600;">MyCoding</a>.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
 
     <!-- Renderiza mensagem de sucesso -->
     <div th:if="${successMessage}">

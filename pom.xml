@@ -95,6 +95,7 @@
 					<failOnMissingWebXml>false</failOnMissingWebXml>
 				</configuration>
 			</plugin>
+
 		</plugins>
 		<finalName>BoxShop</finalName>
 	</build>

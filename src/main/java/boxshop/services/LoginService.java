@@ -45,7 +45,4 @@ public class LoginService {
         mailMessage.setText(message);
         javaMailSender.send(mailMessage);
     }
-
-
-
 }

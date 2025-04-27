@@ -74,10 +74,11 @@ html, body {
 
 /* PAGINA DE INICIO */
 .conteirner-nav-publica {
+    position: fixed;
     background:
     transparent;
-      box-shadow: 0px 20px 40px rgba(37, 9, 62, 0.1);
-      backdrop-filter: saturate(180%) blur(20px);
+    box-shadow: 0px 20px 40px rgba(37, 9, 62, 0.1);
+    backdrop-filter: saturate(180%) blur(20px);
     height: 70px;
     width: 100%;
     display: flex;
@@ -85,7 +86,6 @@ html, body {
     align-items: center;
     top: 0;
     z-index: 10;
-    position: fixed;
 }
 
 .img-nav-logo {
@@ -457,12 +457,13 @@ html, body {
 }
 
 .div-info {
-    width: 80%;
+    width: 95%;
     margin: 0 auto;
     gap: 50px;
     display: flex;
     justify-content: center;
     align-items: flex-start;
+    flex-wrap: wrap;
 }
 
 .div-info-card {
@@ -715,7 +716,6 @@ html, body {
     display: flex;
     flex-direction: column;
     background-color: white;
-    padding: 40px;
     box-shadow: 0 -4px 25px rgba(0, 0, 0, 0.08);
 }
 
@@ -724,7 +724,7 @@ html, body {
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin-top: 20px;
+    margin-top: 40px;
 }
 
 .div-logos-footer {
@@ -750,6 +750,7 @@ html, body {
 .div-footer-p {
     margin: 0;
     margin-top: 40px;
+    text-align: center;
 }
 
 .div-footer-p p {
@@ -760,10 +761,398 @@ html, body {
 }
 /* FOOTER */
 
+/* RESPONSIVIDADE */
+/* PAGINA INICIAL */
+@media (max-width: 1370px) {
+    .div-pag {
+        gap: 20px;
+    }
+
+    .div-pag-img {
+        margin-right: 65px;
+    }
+
+    .img-pag-catalogo-exemplo {
+        left: 340px;
+        width: 200px;
+    }
+}
+
+@media (max-width: 1325px) {
+    .div-pag {
+        flex-direction: column;
+        margin-right: 20px;
+        margin-left: 20px;
+    }
+
+    .div-pag-img {
+        margin-right: 0;
+    }
+
+    .pagamento-texto {
+        margin-top: 60px;
+    }
+}
+
+@media (max-width: 1250px) {
+    .div-inicio {
+        gap: 20px;
+    }
+
+    .div-inicio-colm1 {
+        margin-left: 40px;
+        margin-right: 0;
+    }
+
+    .div-inicio-colm2 {
+        margin-right: 70px;
+        margin-left: 0;
+    }
+
+    .img-section-icone3 {
+        left: 470px;
+    }
+}
+
+@media (max-width: 990px) {
+    .conteiner-inicio {
+        margin-top: 170px;
+    }
+
+    .div-inicio {
+        flex-direction: column;
+        align-items: center;
+        gap: 70px;
+        margin-right: 0;
+        margin-left: 0;
+    }
+
+    .div-inicio-colm1 {
+        width: 80%;
+        margin-right: 40px;
+        order: 2;
+    }
+
+    .div-inicio-colm1 h1 {
+        font-weight: 600;
+        font-size: 48px;
+        line-height: 1;
+    }
+
+    .div-inicio-colm2 {
+        margin-right: 0;
+        margin-left: 0;
+        order: 1;
+    }
+
+    .conteiner-info {
+        width: 100%;
+        margin-top: 50px;
+    }
+}
+
+@media (max-width: 880px) {
+    .div-tire-duvidas {
+        align-items: center;
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 775px) {
+    .pagamento-texto {
+        width: 90%;
+    }
+}
+
+@media (max-width: 620px) {
+    .div-logos-footer {
+        gap: 200px;
+    }
+
+    .img-pag-garoto {
+        width: 400px;
+    }
+
+    .img-pag-catalogo-exemplo {
+        top: 70px;
+        left: 270px;
+        width: 160px;
+    }
+
+    .img-pag-preço-card {
+        position: absolute;
+        top: 300px;
+        left: 10px;
+        width: 180px;
+    }
+}
+
+@media (max-width: 560px) {
+    .img-section-garota {
+        width: 380px;
+    }
+
+    .gif-section-card-divulga {
+        bottom: 35px;
+        left: 40px;
+        width: 120px;
+        height: auto;
+    }
+
+    .img-section-icone3 {
+        top: 180px;
+        left: 380px;
+        width: 40px;
+        height: auto;
+    }
+
+    .img-section-icone2 {
+        top: 5px;
+        left: 320px;
+        width: 40px;
+        height: auto;
+    }
+
+    .img-section-icone1 {
+        top: 60px;
+        left: 70px;
+        width: 40px;
+    }
+
+    .div-inicio-colm2 {
+        width: 80%;
+    }
+}
+
+@media (max-width: 520px) {
+    .div-logos-footer {
+        gap: 100px;
+    }
+}
+
+@media (max-width: 520px) {
+    .img-pag-garoto {
+        width: 340px;
+    }
+
+    .img-pag-catalogo-exemplo {
+        top: 70px;
+        left: 230px;
+        width: 120px;
+        animation: img-pag-catalogo-exemplo 6s ease-in-out infinite;
+    }
+
+    @keyframes img-pag-catalogo-exemplo {
+        0% {
+            transform: translateX(0px);
+        }
+        50% {
+            transform: translateX(-20px);
+        }
+        100% {
+            transform: translateX(0px);
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    .img-section-garota {
+        width: 300px;
+    }
+
+    .gif-section-card-divulga {
+        bottom: 20px;
+        left: 40px;
+        width: 90px;
+        height: auto;
+        margin-right: 40px;
+    }
+
+    .img-section-icone3 {
+        top: 180px;
+        left: 300px;
+        width: 40px;
+        height: auto;
+    }
+
+    .img-section-icone2 {
+        top: 5px;
+        left: 250px;
+        width: 40px;
+        height: auto;
+    }
+
+    .img-section-icone1 {
+        top: 60px;
+        left: 40px;
+        width: 40px;
+    }
+
+    .div-inicio-colm2 {
+        width: 80%;
+    }
+}
+
+@media (max-width: 450px) {
+    .img-nav-logo {
+        width: 120px;
+    }
+
+    .custom-btn {
+        width: 80px;
+        font-size: 11px;
+    }
+
+    .div-inicio-colm1 h1 {
+        font-size: 30px;
+    }
+
+    .div-inicio-colm1 h2 {
+        font-size: 20px;
+    }
+
+    .div-inicio-colm1 p {
+        font-size: 14px;
+    }
+
+    .div-info-card {
+        width: 300px;
+        height: 450px;
+    }
+
+    .img-info-card {
+        width: 30px;
+    }
+
+    .div-info-card h2 {
+        font-size: 20px;
+    }
+
+    .div-info-card p {
+        font-size: 14px;
+    }
+
+    .pagamento-texto h2 {
+        font-size: 20px;
+    }
+
+    .pagamento-texto p {
+        font-size: 14px;
+    }
+
+    .pagamento-texto ul li {
+        font-size: 12px;
+    }
+
+    .div-crie-conta h2 {
+        font-size: 20px;
+    }
+
+    .div-duvidas-h2 h2 {
+        font-size: 20px;
+    }
+
+    .img-logo-footer-boxshop {
+        width: 120px;
+    }
+
+    .img-logo-footer-mycoding {
+        width: 90px;
+    }
+
+    .div-footer-p p {
+        font-size: 12px;
+    }
+
+    .div-tire-duvidas .custom-input-editar {
+        width: 300px;
+    }
+
+    .div-tire-duvidas .custom-input-text-area-editar {
+        width: 300px;
+    }
+
+    .div-tire-duvidas-colm {
+        align-items: center;
+    }
+}
+
+@media (max-width: 430px) {
+    .div-logos-footer {
+        gap: 50px;
+    }
+}
+
+@media (max-width: 400px) {
+    .img-section-garota {
+        width: 250px;
+        margin-left: 10px;
+        margin-right: 0;
+
+    }
+
+    .gif-section-card-divulga {
+        bottom: 20px;
+        width: 75px;
+    }
+
+    .img-section-icone3 {
+        top: 180px;
+        left: 260px;
+        width: 35px;
+        height: auto;
+    }
+
+    .img-section-icone2 {
+        top: 5px;
+        left: 200px;
+        width: 35px;
+        height: auto;
+    }
+
+    .img-section-icone1 {
+        top: 60px;
+        left: 30px;
+        width: 35px;
+    }
+
+    .div-inicio-colm2 {
+        width: 70%;
+    }
+
+    .img-pag-garoto {
+        width: 320px;
+    }
+
+    .img-pag-catalogo-exemplo {
+        top: 50px;
+        left: 190px;
+        width: 110px;
+    }
+
+    .img-pag-preço-card {
+        position: absolute;
+        top: 250px;
+        left: 10px;
+        width: 160px;
+    }
+
+    .div-inicio-colm2 {
+        width: 80%;
+    }
+
+    .conteirner-nav-publica {
+        justify-content: flex-start;
+    }
+
+    .div-img-header {
+        margin-left: 10px;
+        margin-right: 10%;
+    }
 
 
+}
 
+/* PAGINA INICIAL */
 
-/*Temporario excluir*/
-
-/*Temporario excluir*/
+/* RESPONSIVIDADE */

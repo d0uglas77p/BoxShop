@@ -1,6 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
 <html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,42 +20,42 @@
     <link rel="stylesheet" th:href="@{/css/style.css}">
     <title>BoxShop</title>
 </head>
+
 <body>
+    <div class="conteinnerRecuperarSenha">
+        <h1 class="">Recuperar Acesso</h1>
+        <form action="" method="post">
+            <h1>Digite a nova senha</h1>
+            <label>Senha</label>
+            <input type="text" name="emailComercioLogista" id="" placeholder="">
+            <button type="submit">Atualizar</button>
+        </form>
+    </div>
 
-<div class="conteinnerRecuperarSenha">
-    <h1 class="">Recuperar Acesso</h1>
-    <form action="" method="post">
-        <h1>Digite a nova senha</h1>
-        <label>Senha</label>
-        <input type="text" name="emailComercioLogista" id="" placeholder="">
-        <button type="submit">Atualizar</button>
-    </form>
-</div>
+    <!-- Renderiza mensagem de sucesso -->
+    <div th:if="${successMessage}">
+        <script th:inline="javascript">
+            Swal.fire({
+                icon: 'success',
+                text: [[${successMessage}]],
+                confirmButtonText: 'OK',
+                confirmButtonColor: '#00ff00'
+            });
+        </script>
+    </div>
 
-<!-- Renderiza mensagem de sucesso -->
-<div th:if="${successMessage}">
-    <script th:inline="javascript">
-        Swal.fire({
-            icon: 'success',
-            text: [[${successMessage}]],
-            confirmButtonText: 'OK',
-            confirmButtonColor: '#00ff00'
-        });
-    </script>
-</div>
+    <!-- Renderiza mensagem de erro -->
+    <div th:if="${errorMessage}">
+        <script th:inline="javascript">
+            Swal.fire({
+                icon: 'error',
+                text: [[${errorMessage}]],
+                confirmButtonText: 'OK',
+                confirmButtonColor: '#00ff00'
+            });
+        </script>
+    </div>
 
-<!-- Renderiza mensagem de erro -->
-<div th:if="${errorMessage}">
-    <script th:inline="javascript">
-        Swal.fire({
-            icon: 'error',
-            text: [[${errorMessage}]],
-            confirmButtonText: 'OK',
-            confirmButtonColor: '#00ff00'
-        });
-    </script>
-</div>
-
-<script th:src="@{/js/javascript.js}"></script>
+    <script th:src="@{/js/javascript.js}"></script>
 </body>
 </html>

@@ -61,5 +61,4 @@ public class LogistaController  {
 
         return ResponseEntity.ok(response);
     }
-
 }

@@ -39,6 +39,5 @@ public class LoginController {
             redirectAttributes.addFlashAttribute("errorMessage", "Erro ao Recuperar senha: "+e.getMessage());
             return "redirect:/inicio";
         }
-
     }
 }

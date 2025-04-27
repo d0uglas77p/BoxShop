@@ -23,7 +23,4 @@ public interface LoginRepository extends JpaRepository<Logista, Long> {
             @Param("token") String token,
             @Param("dataAtual") LocalDateTime dataAtual
     );
-
-
-
 }

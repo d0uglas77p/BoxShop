@@ -19,11 +19,6 @@ public class LogistaController  {
     @Autowired
     private LogistaService logistaService;
 
-    @GetMapping("/inicio")
-    public String cadastrarLogistaPage() {
-        return "inicio";
-    }
-
     @PostMapping("/cadastrar-logista")
     public String cadastrarLogista(@ModelAttribute Logista logista, RedirectAttributes redirectAttributes) {
         try {

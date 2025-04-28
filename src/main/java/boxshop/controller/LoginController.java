@@ -19,7 +19,8 @@ public class LoginController {
     }
 
     @PostMapping("/recuperar-conta-logista")
-    public String recuperarSenhaLog(@RequestParam("emailComercioLogista") String emailComercioLogista, RedirectAttributes redirectAttributes) {
+    public String recuperarSenhaLog(@RequestParam("emailComercioLogista") String emailComercioLogista,
+                                    RedirectAttributes redirectAttributes) {
         try {
             if (!loginService.isEmailCadastrado(emailComercioLogista)) {
                 redirectAttributes.addFlashAttribute("errorMessage", "Esse e-mail não está cadastrado!");
@@ -39,5 +40,27 @@ public class LoginController {
             redirectAttributes.addFlashAttribute("errorMessage", "Erro ao Recuperar senha: "+e.getMessage());
             return "redirect:/inicio";
         }
+    }
+
+    @PostMapping("/atualizar-senha")
+    public String atualizarSenhaLog(@RequestParam("token")String token,
+                                    @RequestParam("novaSenhaComercialLogista") String novaSenhaComercialLogista,
+                                    RedirectAttributes redirectAttributes){
+        System.out.println("Token recebido: " + token);
+
+        try {
+            if(loginService.isTokenValido(token)){
+                loginService.atualizarSenha(token, novaSenhaComercialLogista);
+                redirectAttributes.addFlashAttribute("successMessage", "Senha atualizado com sucesso!");
+                return "redirect:/inicio";
+          }else{
+                redirectAttributes.addFlashAttribute("errorMessage","Erro ao atualizar senha, token inválido");
+                return "redirect:/inicio";
+            }
+        }catch (Exception e){
+            redirectAttributes.addFlashAttribute("errorMessage","Erro ao atualizar senha"+e.getMessage());
+            return "redirect:/inicio";
+        }
+
     }
 }

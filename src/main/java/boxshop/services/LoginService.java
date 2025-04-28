@@ -1,9 +1,12 @@
 package boxshop.services;
 
 import boxshop.exception.EmailNaoCriadoException;
+import boxshop.exception.TokenExpiradoException;
+import boxshop.model.Logista;
 import boxshop.repository.LoginRepository;
 import boxshop.repository.LogistaRepository;
 import jakarta.transaction.Transactional;
+import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
@@ -44,5 +47,27 @@ public class LoginService {
         mailMessage.setSubject("Recuperação de senha");
         mailMessage.setText(message);
         javaMailSender.send(mailMessage);
+    }
+    public boolean isTokenValido(String token){
+        LocalDateTime agora = LocalDateTime.now();
+        Logista logista = loginRepository.findByTokenRecuperacao(token,agora);
+        return logista !=null;
+    }
+
+    @Transactional
+    public void atualizarSenha(String token, String novaSenhaComercialLogista){
+        if(novaSenhaComercialLogista.length() < 8){
+            throw new IllegalArgumentException("A senha deve ter no mínimo 8 caracteres");
+        }
+        Logista logista = loginRepository.findByTokenRecuperacao(token,LocalDateTime.now());
+        if(logista != null){
+            logista.setSenhaComercialLogista(BCrypt.hashpw(novaSenhaComercialLogista,BCrypt.gensalt()));
+            logista.setTokenRecuperacao(null);
+            logista.setTokenExpiracao(null);
+            logistaRepository.save(logista);
+        }
+        else{
+            throw new TokenExpiradoException("Token expirado, tente novamente");
+        }
     }
 }

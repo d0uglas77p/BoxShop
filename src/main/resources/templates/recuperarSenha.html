@@ -24,10 +24,12 @@
 <body>
     <div class="conteinnerRecuperarSenha">
         <h1 class="">Recuperar Acesso</h1>
-        <form action="" method="post">
+        <form th:action="@{/atualizar-senha}" method="post">
             <h1>Digite a nova senha</h1>
             <label>Senha</label>
-            <input type="text" name="emailComercioLogista" id="" placeholder="">
+            <input type="hidden" name="token" th:value="${token}">
+            <input type="password" name="novaSenhaComercialLogista" placeholder="Digite sua senha" pattern=".{8,}"
+                   required title="A senha deve ter pelo menos 8 caracteres" class="ant-input custom-input-editar">
             <button type="submit">Atualizar</button>
         </form>
     </div>

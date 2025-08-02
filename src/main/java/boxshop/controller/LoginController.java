@@ -10,6 +10,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 public class LoginController {
+
     @Autowired
     private LoginService loginService;
 
@@ -52,15 +53,17 @@ public class LoginController {
             if(loginService.isTokenValido(token)){
                 loginService.atualizarSenha(token, novaSenhaComercialLogista);
                 redirectAttributes.addFlashAttribute("successMessage", "Senha atualizado com sucesso!");
+
                 return "redirect:/inicio";
-          }else{
+          } else{
                 redirectAttributes.addFlashAttribute("errorMessage","Erro ao atualizar senha, token inválido");
                 return "redirect:/inicio";
             }
-        }catch (Exception e){
+        } catch (Exception e){
             redirectAttributes.addFlashAttribute("errorMessage","Erro ao atualizar senha"+e.getMessage());
             return "redirect:/inicio";
         }
 
     }
+
 }

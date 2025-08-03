@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 
 public interface LoginRepository extends JpaRepository<Logista, Long> {
 
-    @Modifying
+    @Modifying(clearAutomatically = true, flushAutomatically = true)
     @Query("UPDATE Logista u SET u.tokenRecuperacao = :token, u.tokenExpiracao = :tokenExpiracao WHERE u.emailComercioLogista = :emailComercioLogista")
     void savarTokenRecuperacao(
             @Param("emailComercioLogista") String emailComercioLogista,
